@@ -21,19 +21,19 @@
 		$md5=hash('md5',$hash);
 		if($md5 === $pwd){
 			error_log("Login success ".$_POST['email']);
-			$_SESSION["name"]=$_POST['email'];
-			header("Location: view.php");
+			$_SESSION["username"]=$_POST['email'];
+			header("Location: index.php");
 			return ;
 		}
 		else{
 			error_log("Login fail ".$_POST['email']."$md5");
-			$_SESSION["message"]="<p style=\"color:red\">Incorrect Password";
+			$_SESSION["message"]="<p style=\"color:red\">Incorrect password";
 			header("Location: login.php");
 			return ;
 		}
 	}
 	else if((isset($_POST["email"])&&empty($_POST["email"]) ) || (isset($_POST["pass"])&&empty($_POST["pass"]) )){
-			$_SESSION["message"]="<p style=\"color:red\">Email and password are required";
+			$_SESSION["message"]="<p style=\"color:red\">User name and password are required";
 			header("Location: login.php");
 			return;
 	}
